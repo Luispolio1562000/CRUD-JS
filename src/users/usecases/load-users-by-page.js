@@ -1,3 +1,6 @@
+import { localhostUserToModel } from "../mappers/localhost-user-mapper";
+import { User } from "../models/user";
+
 
 
 
@@ -12,9 +15,10 @@ export const loadUsersByPage = async( page = 1 ) => {
 
     const res = await fetch(url);
     const data = await res.json();
+    const newData = await data.data
 
-    console.log(data.data);
-   // const users = data.map( localhostUserToModel );
+   const users = newData.map(localhostUserToModel );
+   console.log(users);
 
     return users;
 }
